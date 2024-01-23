@@ -1,6 +1,9 @@
 import React from 'react'
 import { MdDashboard } from 'react-icons/md'
-import { FaTableList } from "react-icons/fa";
+import { FaTableList, FaRegUser } from "react-icons/fa";
+import { GoSignIn } from "react-icons/go";
+import { SiGnuprivacyguard } from "react-icons/si";
+import { RiBillLine } from "react-icons/ri";
 
 const Sidebar = () => {
 
@@ -17,22 +20,22 @@ const Sidebar = () => {
     },
     {
       id: 3,
-      icon: <MdDashboard />,
+      icon: <RiBillLine />,
       name: 'Billing'
     },
     {
       id: 4,
-      icon: <MdDashboard />,
+      icon: <FaRegUser />,
       name: 'Profile'
     },
     {
       id: 5,
-      icon: <MdDashboard />,
+      icon: <GoSignIn />,
       name: 'Sign In'
     },
     {
       id: 6,
-      icon: <MdDashboard />,
+      icon: <SiGnuprivacyguard />,
       name: 'Sign Up'
     },
   ]
