@@ -1,12 +1,13 @@
 import React from 'react'
 import { MdDashboard } from 'react-icons/md'
-import { FaTableList, FaRegUser } from "react-icons/fa";
+import { FaList, FaRegUser } from "react-icons/fa";
 import { GoSignIn } from "react-icons/go";
 import { SiGnuprivacyguard } from "react-icons/si";
 import { RiBillLine } from "react-icons/ri";
 
 const Sidebar = () => {
 
+  //  links on sidebar
   const sidebar_links = [
     {
       id: 1,
@@ -15,7 +16,7 @@ const Sidebar = () => {
     },
     {
       id: 2,
-      icon: <FaTableList />,
+      icon: <FaList />,
       name: 'Tables'
     },
     {
@@ -41,13 +42,18 @@ const Sidebar = () => {
   ]
 
   return (
-    <section>
+    <section
+      className='fixed bg-red-500 w-[20%] h-[90%] m-5 rounded-xl shadow-md p-10 text-white'
+    >
       <p>GoodsBrite</p>
 
       <div>
         {
           sidebar_links.map(link => (
-            <p>{link.name}</p>
+            <div key={link.id} className='flex items-center gap-1'>
+              {link.icon}
+              <p>{link.name}</p>
+            </div>
           ))
         }
       </div>
