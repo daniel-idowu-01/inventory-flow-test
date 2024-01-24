@@ -2,8 +2,8 @@ import React from 'react'
 
 const DashboardComp = () => {
   return (
-    <div>
-      
+    <div className='h-screen'>
+      <p>Dashboard Comp</p>
     </div>
   )
 }

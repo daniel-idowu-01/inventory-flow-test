@@ -38,12 +38,12 @@ const Sidebar = () => {
       id: 6,
       icon: <SiGnuprivacyguard className='text-xl' />,
       name: 'Sign Up'
-    },
+    }
   ]
 
   return (
     <section
-      className='fixed flex flex-col gap-10 bg-[#49598a] w-[20%] h-[95%] m-5 rounded-xl shadow-md px-5 py-10 text-white'
+      className='fixed flex flex-col gap-10 bg-[#344767] w-[20%] h-[95%] m-5 rounded-xl shadow-2xl px-5 py-10 text-white'
     >
       <p className='w-fit border-l-2 px-2 rounded-full text-xl text-center'>
         GoodsBrite
@@ -54,7 +54,7 @@ const Sidebar = () => {
           sidebar_links.map(link => (
             <div
               key={link.id}
-              className='transition-all hover:bg-blue-500 hover:cursor-pointer w-full p-2 px-4 rounded-md flex items-center gap-3'
+              className='transition-all hover:bg-blue-500 hover:cursor-pointer w-full p-3 px-4 rounded-md flex items-center gap-3'
             >
               {link.icon}
               <p>{link.name}</p>
