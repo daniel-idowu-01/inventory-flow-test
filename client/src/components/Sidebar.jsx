@@ -11,46 +11,51 @@ const Sidebar = () => {
   const sidebar_links = [
     {
       id: 1,
-      icon: <MdDashboard />,
+      icon: <MdDashboard className='text-xl' />,
       name: 'Dashboard'
     },
     {
       id: 2,
-      icon: <FaList />,
+      icon: <FaList className='text-xl' />,
       name: 'Tables'
     },
     {
       id: 3,
-      icon: <RiBillLine />,
+      icon: <RiBillLine className='text-xl' />,
       name: 'Billing'
     },
     {
       id: 4,
-      icon: <FaRegUser />,
+      icon: <FaRegUser className='text-xl' />,
       name: 'Profile'
     },
     {
       id: 5,
-      icon: <GoSignIn />,
+      icon: <GoSignIn className='text-xl' />,
       name: 'Sign In'
     },
     {
       id: 6,
-      icon: <SiGnuprivacyguard />,
+      icon: <SiGnuprivacyguard className='text-xl' />,
       name: 'Sign Up'
     },
   ]
 
   return (
     <section
-      className='fixed bg-red-500 w-[20%] h-[90%] m-5 rounded-xl shadow-md p-10 text-white'
+      className='fixed flex flex-col gap-10 bg-[#49598a] w-[20%] h-[95%] m-5 rounded-xl shadow-md px-5 py-10 text-white'
     >
-      <p>GoodsBrite</p>
+      <p className='w-fit border-l-2 px-2 rounded-full text-xl text-center'>
+        GoodsBrite
+      </p>
 
-      <div>
+      <div className='flex flex-col gap-5'>
         {
           sidebar_links.map(link => (
-            <div key={link.id} className='flex items-center gap-1'>
+            <div
+              key={link.id}
+              className='transition-all hover:bg-blue-500 hover:cursor-pointer w-full p-2 px-4 rounded-md flex items-center gap-3'
+            >
               {link.icon}
               <p>{link.name}</p>
             </div>
