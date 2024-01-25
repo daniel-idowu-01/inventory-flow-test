@@ -1,12 +1,15 @@
 import React from 'react'
 
-const StatsComp = ({title, value, percent, time}) => {
+const StatsComp = ({title, value, percent, time, icon, bg_color}) => {
   return (
-    <article className='p-2 px-3 shadow-md border w-52 h-32 rounded-xl'>
+    <article className='p-3 shadow-md border w-52 h-32 rounded-xl'>
+
       <section
-        className='flex justify-end text-right '
+        className='flex justify-between text-right '
       >
-        <div></div>
+        <div className={`${bg_color} p-3 rounded-xl w-fit h-fit text-white`}>
+          {icon}
+        </div>
 
         <div>
           <p>{title}</p>
