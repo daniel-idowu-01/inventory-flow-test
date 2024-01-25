@@ -1,10 +1,13 @@
 import React from 'react'
+import StatsComp from './StatsComp'
 
 const DashboardComp = () => {
   return (
-    <div className='h-screen'>
-      <p>Dashboard Comp</p>
-    </div>
+    <section className='h-screen bg-red-400'>
+      <div className='absolute left-[25%] bg-blue-500 h-full'>
+        <p>Dashboard</p>
+      </div>
+    </section>
   )
 }
 
