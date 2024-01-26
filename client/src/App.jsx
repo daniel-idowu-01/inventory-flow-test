@@ -1,13 +1,16 @@
 /* #49598a */
 import Sidebar from "./components/Sidebar"
 import DashboardComp from "./components/DashboardComp"
+import { DataProvider } from "./context/DataContext"
 
 function App() {
 
   return (
     <div>
-      <Sidebar />
-      <DashboardComp />
+      <DataProvider>
+        <Sidebar />
+        <DashboardComp />
+      </DataProvider>
     </div>
   )
 }

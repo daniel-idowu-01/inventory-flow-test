@@ -1,12 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import StatsComp from './StatsComp'
 import TopNav from './TopNav';
+import DataContext from '../context/DataContext';
 import { MdOutlineInventory2 } from "react-icons/md";
 import { ImStatsBars } from "react-icons/im";
 import { FaStoreAlt } from "react-icons/fa";
 import { FiUserPlus } from "react-icons/fi";
 
 const DashboardComp = () => {
+
+  const { items } = useContext(DataContext)
 
   const dashboardStats = [
     {
@@ -46,6 +49,7 @@ const DashboardComp = () => {
   return (
     <section className='h-screen'>
       <div className='relative md:absolute md:left-[25%] top-5 md:top-10 h-full md:w-[75%]'>
+        {items}
         <TopNav />
         <article className='flex flex-col md:flex-row gap-4 justify-between p-10'>
           {
