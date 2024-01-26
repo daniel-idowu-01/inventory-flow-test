@@ -43,7 +43,7 @@ const Sidebar = () => {
 
   return (
     <section
-      className='fixed flex flex-col gap-10 bg-[#344767] w-[20%] h-[95%] m-5 rounded-xl shadow-2xl px-5 py-10 text-white'
+      className='hidden fixed md:flex flex-col gap-10 bg-[#344767] w-[20%] h-[95%] m-5 rounded-xl shadow-2xl px-5 py-10 text-white'
     >
       <p className='w-fit border-l-2 px-2 rounded-full text-xl text-center'>
         GoodsBrite

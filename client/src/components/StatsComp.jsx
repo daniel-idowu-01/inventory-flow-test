@@ -2,7 +2,7 @@ import React from 'react'
 
 const StatsComp = ({title, value, percent, time, icon, bg_color}) => {
   return (
-    <article className='p-3 shadow-md border w-52 h-32 rounded-xl'>
+    <article className='p-3 shadow-md border md:w-52 md:h-32 rounded-xl'>
 
       <section
         className='flex justify-between text-right '

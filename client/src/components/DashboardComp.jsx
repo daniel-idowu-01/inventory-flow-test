@@ -1,5 +1,6 @@
 import React from 'react'
 import StatsComp from './StatsComp'
+import TopNav from './TopNav';
 import { MdOutlineInventory2 } from "react-icons/md";
 import { ImStatsBars } from "react-icons/im";
 import { FaStoreAlt } from "react-icons/fa";
@@ -44,8 +45,9 @@ const DashboardComp = () => {
 
   return (
     <section className='h-screen'>
-      <div className='absolute left-[25%] h-full w-[75%]'>
-        <article className='flex justify-between p-10'>
+      <div className='md:absolute md:left-[25%] h-full md:w-[75%]'>
+      <TopNav />
+        <article className='flex flex-col md:flex-row gap-4 justify-between p-10'>
           {
             dashboardStats.map(stat => (
               <StatsComp {...stat} />
