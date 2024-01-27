@@ -46,7 +46,7 @@ const Sidebar = () => {
 
   return (
     <section
-      className={`${sideBar ? 'w-[70%] z-10 h-full transition-all' : 'hidden w-[20%] m-5 h-[95%] rounded-xl'} fixed md:flex flex-col gap-10 bg-[#344767] shadow-2xl px-5 py-10 text-white`}
+      className={`${sideBar ? 'left-0' : '-left-96'} fixed md:flex flex-col gap-10 bg-[#344767] z-10 w-[70%] md:w-[20%] h-full md:h-[95%] md:m-5 md:rounded-xl shadow-2xl px-5 py-10 text-white transition-all`}
     >
       <p className='w-fit border-l-2 px-2 rounded-full text-xl text-center'>
         GoodsBrite

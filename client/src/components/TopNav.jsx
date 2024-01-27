@@ -11,8 +11,9 @@ const TopNav = () => {
   return (
     <section className='text-2xl flex gap-3 absolute right-10'>
       <AiOutlineMenu
+        className='md:hidden'
         onClick={() => setSideBar(!sideBar)}
-        className='md:hidden' />
+      />
       <CiSettings className='hidden md:block' />
       <CiUser className='hidden md:block' />
       <IoIosNotificationsOutline className='hidden md:block' />
