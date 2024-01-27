@@ -1,15 +1,12 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import StatsComp from './StatsComp'
 import TopNav from './TopNav';
-import DataContext from '../context/DataContext';
 import { MdOutlineInventory2 } from "react-icons/md";
 import { ImStatsBars } from "react-icons/im";
 import { FaStoreAlt } from "react-icons/fa";
 import { FiUserPlus } from "react-icons/fi";
 
 const DashboardComp = () => {
-
-  const { setSideBar } = useContext(DataContext)
 
   const dashboardStats = [
     {

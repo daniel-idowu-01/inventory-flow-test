@@ -46,13 +46,13 @@ const Sidebar = () => {
 
   return (
     <section
-      className='hidden fixed md:flex flex-col gap-10 bg-[#344767] w-[20%] h-[95%] m-5 rounded-xl shadow-2xl px-5 py-10 text-white'
+      className={`${sideBar ? 'w-[70%] z-10 h-full transition-all' : 'hidden w-[20%] m-5 h-[95%] rounded-xl'} fixed md:flex flex-col gap-10 bg-[#344767] shadow-2xl px-5 py-10 text-white`}
     >
       <p className='w-fit border-l-2 px-2 rounded-full text-xl text-center'>
         GoodsBrite
       </p>
 
-      <div className='flex flex-col gap-5'>
+      <div className='flex flex-col gap-5 mt-7 md:mt-0'>
         {
           sidebar_links.map(link => (
             <div
