@@ -4,10 +4,10 @@ import { createContext, useState } from "react";
 
 export function DataProvider({ children }) {
 
-    const [items, setItems] = useState('Hello')
+    const [sideBar, setSideBar] = useState(false)
 
     return (
-        <DataContext.Provider value={{ items }}>
+        <DataContext.Provider value={{ sideBar, setSideBar }}>
             {children} 
         </DataContext.Provider>
     )

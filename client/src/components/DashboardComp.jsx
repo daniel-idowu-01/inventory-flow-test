@@ -9,7 +9,7 @@ import { FiUserPlus } from "react-icons/fi";
 
 const DashboardComp = () => {
 
-  const { items } = useContext(DataContext)
+  const { setSideBar } = useContext(DataContext)
 
   const dashboardStats = [
     {
@@ -49,7 +49,6 @@ const DashboardComp = () => {
   return (
     <section className='h-screen'>
       <div className='relative md:absolute md:left-[25%] top-5 md:top-10 h-full md:w-[75%]'>
-        {items}
         <TopNav />
         <article className='flex flex-col md:flex-row gap-4 justify-between p-10'>
           {

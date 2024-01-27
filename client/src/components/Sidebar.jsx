@@ -1,11 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { MdDashboard } from 'react-icons/md'
 import { FaList, FaRegUser } from "react-icons/fa";
 import { GoSignIn } from "react-icons/go";
 import { SiGnuprivacyguard } from "react-icons/si";
 import { RiBillLine } from "react-icons/ri";
+import DataContext from '../context/DataContext';
 
 const Sidebar = () => {
+
+  const { sideBar } = useContext(DataContext)
 
   //  links on sidebar
   const sidebar_links = [
