@@ -8,6 +8,7 @@ import { FiUserPlus } from "react-icons/fi";
 
 const DashboardComp = () => {
 
+  // data for top dashboard stats
   const dashboardStats = [
     {
       title: 'Bookings',
