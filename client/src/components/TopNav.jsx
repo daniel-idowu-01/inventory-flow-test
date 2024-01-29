@@ -14,9 +14,18 @@ const TopNav = () => {
         className='md:hidden'
         onClick={() => setSideBar(!sideBar)}
       />
-      <CiSettings className='hidden md:block' />
-      <CiUser className='hidden md:block' />
-      <IoIosNotificationsOutline className='hidden md:block' />
+
+      <CiSettings
+        className='hidden md:block'
+      />
+
+      <CiUser
+        className='hidden md:block'
+      />
+      
+      <IoIosNotificationsOutline
+        className='hidden md:block'
+      />
     </section>
   )
 }
