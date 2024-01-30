@@ -46,9 +46,11 @@ const DashboardComp = () => {
 
   return (
     <section className='h-screen'>
-      <div className='relative md:absolute md:left-[25%] top-5 md:top-10 h-full md:w-[75%]'>
+      <div className='relative top-5 md:absolute md:left-[25%] lg:left-[25%] lg:top-10 h-full md:w-[75%] lg:w-[75%]'>
         <TopNav />
-        <article className='flex flex-col md:flex-row gap-4 justify-between p-10'>
+        <article
+          className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 place-items-stretch p-10'
+        >
           {
             dashboardStats.map(stat => (
               <StatsComp {...stat} />
