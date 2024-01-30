@@ -2,15 +2,21 @@
 import Sidebar from "./components/Sidebar"
 import DashboardComp from "./components/DashboardComp"
 import { DataProvider } from "./context/DataContext"
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 
 function App() {
 
   return (
     <div>
-      <DataProvider>
-        <Sidebar />
-        <DashboardComp />
-      </DataProvider>
+      <Router>
+        <DataProvider>
+          <Sidebar />
+          <Routes>
+            <Route path="/" element={<DashboardComp />} />
+          </Routes>
+        </DataProvider>
+      </Router>
+      
     </div>
   )
 }
