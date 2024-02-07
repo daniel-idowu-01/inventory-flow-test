@@ -1,6 +1,8 @@
 import React from 'react'
 import StatsComp from './StatsComp'
 import TopNav from './TopNav';
+import BarChartComp from './BarChartComp';
+import LineChartComp from './LineChartComp';
 import { MdOutlineInventory2 } from "react-icons/md";
 import { ImStatsBars } from "react-icons/im";
 import { FaStoreAlt } from "react-icons/fa";
@@ -48,15 +50,34 @@ const DashboardComp = () => {
     <section className='h-screen'>
       <div className='relative top-5 md:absolute md:left-[28%] lg:left-[25%] lg:top-10 h-full md:w-[75%]'>
         <TopNav />
-        <article
-          className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 place-items-stretch md:place-items-center p-10'
-        >
-          {
-            dashboardStats.map(stat => (
-              <StatsComp {...stat} />
-            ))
-          }
-        </article>
+        <section>
+          {/* Top dashboard stats */}
+          <article
+            className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 place-items-stretch md:place-items-center p-10'
+          >
+            {
+              dashboardStats.map(stat => (
+                <StatsComp {...stat} />
+              ))
+            }
+          </article>
+
+          {/*  */}
+          <article
+            className='grid grid-cols-1 md:grid-cols-2 place-items-center md:place-items-center gap-10 px-10'
+          >
+            <div className='bg-blue-500 w-fit p-5 shadow-md rounded-xl'>
+              <p className='text-center text-white'>Bar Chart</p>
+              <BarChartComp className='' />
+            </div>
+
+            <div className='bg-green-500 w-fit p-5 shadow-md rounded-xl'>
+              <p className='text-center text-white'>Line Chart</p>
+              <LineChartComp className='' />
+            </div>
+        
+          </article>
+        </section>
       </div>
     </section>
   )
