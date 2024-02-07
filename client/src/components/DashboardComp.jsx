@@ -3,6 +3,7 @@ import StatsComp from './StatsComp'
 import TopNav from './TopNav';
 import BarChartComp from './BarChartComp';
 import LineChartComp from './LineChartComp';
+import { MdOutlineTimer } from "react-icons/md";
 import { MdOutlineInventory2 } from "react-icons/md";
 import { ImStatsBars } from "react-icons/im";
 import { FaStoreAlt } from "react-icons/fa";
@@ -62,21 +63,44 @@ const DashboardComp = () => {
             }
           </article>
 
-          {/*  */}
-          <article
-            className='grid grid-cols-1 md:grid-cols-2 place-items-center md:place-items-center gap-10 px-10'
+          {/* Bar and Line Chart */}
+          <main
+            className='grid grid-cols-1 md:grid-cols-2 place-items-center md:place-items-center gap-10 px-10 pb-10'
           >
-            <div className='bg-blue-500 w-fit p-5 shadow-md rounded-xl'>
-              <p className='text-center text-white'>Bar Chart</p>
-              <BarChartComp className='' />
-            </div>
+            {/* bar chart component */}
+            <article>
+              <div className='bg-blue-500 w-fit p-5 shadow-md rounded-t-xl'>
+                <BarChartComp />
+              </div>
 
-            <div className='bg-green-500 w-fit p-5 shadow-md rounded-xl'>
-              <p className='text-center text-white'>Line Chart</p>
-              <LineChartComp className='' />
-            </div>
-        
-          </article>
+              <div className='shadow-xl px-10 py-5 rounded-b-xl'>
+                <p className='text-lg font-bold opacity-80'>Website Views</p>
+                <p className='opacity-50'>Last Campaign Performance</p>
+                <hr className='w-[80%] mx-auto my-3' />
+                <div className='flex items-center gap-1 opacity-30'>
+                  <MdOutlineTimer />
+                  <p>campaign sent 2 days ago</p>
+                </div>
+              </div>
+            </article>
+
+            {/* line chart component */}
+            <article>
+              <div className='bg-green-500 w-fit p-5 shadow-md rounded-t-xl'>
+                <LineChartComp />
+              </div>
+
+              <div className='shadow-xl px-10 py-5 rounded-b-xl'>
+                <p className='text-lg font-bold opacity-80'>Website Views</p>
+                <p className='opacity-50'>Last Campaign Performance</p>
+                <hr className='w-[80%] mx-auto my-3' />
+                <div className='flex items-center gap-1 opacity-30'>
+                  <MdOutlineTimer />
+                  <p>campaign sent 2 days ago</p>
+                </div>
+              </div>
+            </article>
+          </main>
         </section>
       </div>
     </section>
