@@ -90,13 +90,13 @@ const DashboardComp = () => {
                 <LineChartComp />
               </div>
 
-              <div className='shadow-xl px-10 py-5 rounded-b-xl'>
-                <p className='text-lg font-bold opacity-80'>Website Views</p>
-                <p className='opacity-50'>Last Campaign Performance</p>
+                <div className='shadow-xl px-10 py-5 rounded-b-xl'>
+                  <p className='text-lg font-bold opacity-80'>Daily Sales</p>
+                <p className='opacity-50'>(+15%) increase in today's sales</p>
                 <hr className='w-[80%] mx-auto my-3' />
                 <div className='flex items-center gap-1 opacity-30'>
                   <MdOutlineTimer />
-                  <p>campaign sent 2 days ago</p>
+                  <p>updated 4 minutes ago</p>
                 </div>
               </div>
             </article>
