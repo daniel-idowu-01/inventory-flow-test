@@ -5,6 +5,7 @@ import { GoSignIn } from "react-icons/go";
 import { SiGnuprivacyguard } from "react-icons/si";
 import { RiBillLine } from "react-icons/ri";
 import DataContext from '../context/DataContext';
+import { Link } from 'react-router-dom';
 
 const Sidebar = () => {
 
@@ -15,32 +16,38 @@ const Sidebar = () => {
     {
       id: 1,
       icon: <MdDashboard className='text-xl' />,
-      name: 'Dashboard'
+      name: 'Dashboard',
+      link: '/'
     },
     {
       id: 2,
       icon: <FaList className='text-xl' />,
-      name: 'Tables'
+      name: 'Tables',
+      link: '/manage'
     },
     {
       id: 3,
       icon: <RiBillLine className='text-xl' />,
-      name: 'Billing'
+      name: 'Billing',
+      link: ''
     },
     {
       id: 4,
       icon: <FaRegUser className='text-xl' />,
-      name: 'Profile'
+      name: 'Profile',
+      link: ''
     },
     {
       id: 5,
       icon: <GoSignIn className='text-xl' />,
-      name: 'Sign In'
+      name: 'Sign In',
+      link: ''
     },
     {
       id: 6,
       icon: <SiGnuprivacyguard className='text-xl' />,
-      name: 'Sign Up'
+      name: 'Sign Up',
+      link: ''
     }
   ]
 
@@ -55,13 +62,14 @@ const Sidebar = () => {
       <div className='flex flex-col gap-5 mt-7 md:mt-0'>
         {
           sidebar_links.map(link => (
-            <div
+            <Link
+              to={link.link}
               key={link.id}
               className='transition-all hover:bg-blue-500 hover:cursor-pointer w-full p-3 px-4 rounded-md flex items-center gap-3'
             >
               {link.icon}
               <p>{link.name}</p>
-            </div>
+            </Link>
           ))
         }
       </div>
