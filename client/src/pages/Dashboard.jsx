@@ -1,10 +1,12 @@
 import React from 'react'
-import DashboardComp from '../components/DashboardComp'
+import Sidebar from '../components/Sidebar'
+import { Outlet } from 'react-router-dom'
 
 const Dashboard = () => {
   return (
     <div>
-      <DashboardComp />
+      <Sidebar />
+      <Outlet />
     </div>
   )
 }

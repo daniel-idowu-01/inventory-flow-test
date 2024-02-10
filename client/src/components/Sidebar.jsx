@@ -35,19 +35,19 @@ const Sidebar = () => {
       id: 4,
       icon: <FaRegUser className='text-xl' />,
       name: 'Profile',
-      link: ''
+      link: '/profile'
     },
     {
       id: 5,
       icon: <GoSignIn className='text-xl' />,
       name: 'Sign In',
-      link: ''
+      link: '/sign-in'
     },
     {
       id: 6,
       icon: <SiGnuprivacyguard className='text-xl' />,
       name: 'Sign Up',
-      link: ''
+      link: '/sign-up'
     }
   ]
 
