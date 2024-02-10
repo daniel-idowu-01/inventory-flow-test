@@ -1,11 +1,12 @@
-import Dashboard from "./pages/Dashboard"
-import DashboardComp from "./components/DashboardComp"
-import ManageInventory from "./pages/ManageInventory"
-import SignIn from './pages/SignIn'
-import SignUp from "./pages/SignUp"
+import React, { lazy, Suspense } from "react"
 import Profile from "./pages/Profile"
 import { DataProvider } from "./context/DataContext"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+const Dashboard = lazy(() => import('./pages/Dashboard'))
+const ManageInventory = lazy(() => import('./pages/ManageInventory'))
+const SignUp = lazy(() => import('./pages/SignUp'))
+const SignIn = lazy(() => import('./pages/SignIn'))
+const DashboardComp = lazy(() => import('./components/DashboardComp'))
 
 function App() {
 
@@ -14,13 +15,51 @@ function App() {
       <Router>
         <DataProvider>
           <Routes>
-            <Route element={<Dashboard />}>
-              <Route path="/" element={<DashboardComp />} />
-              <Route path="/manage" element={<ManageInventory />} />
+            {/* dashboard template */}
+            <Route
+              element={
+                <Suspense fallback={<div>Loading...</div>}>
+                  <Dashboard />
+                </Suspense>}
+            >
+              
+              {/* dashboard component */}
+              <Route
+                path="/"
+                element={
+                  <Suspense fallback={<div>Loading...</div>}>
+                    <DashboardComp />
+                  </Suspense>}
+              />
+
+              {/* manage inventory data */}
+              <Route
+                path="/manage"
+                element={
+                  <Suspense fallback={<div>Loading...</div>}>
+                    <ManageInventory />
+                  </Suspense>}
+              />
               <Route path="/profile" element={<Profile />} />
             </Route>
-            <Route path="/sign-in" element={<SignIn />} />
-            <Route path="/sign-up" element={<SignUp />} />
+
+            {/* sign in */}
+            <Route
+              path="/sign-in"
+              element={
+                <Suspense fallback={<div>Loading...</div>}>
+                  <SignIn />
+                </Suspense>}
+            />
+
+            {/* sign up */}
+            <Route
+              path="/sign-up"
+              element={
+                <Suspense fallback={<div>Loading...</div>}>
+                  <SignUp />
+                </Suspense>
+              } />
           </Routes>
         </DataProvider>
       </Router>

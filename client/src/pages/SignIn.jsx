@@ -13,8 +13,6 @@ const SignIn = () => {
     })
   }
 
-  console.log(formData)
-
   return (
     <main className='grid place-items-center relative top-20'>
       <article className=''>
