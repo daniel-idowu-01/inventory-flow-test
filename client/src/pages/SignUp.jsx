@@ -1,8 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Button, Checkbox, Label, TextInput } from 'flowbite-react';
 import { Link } from 'react-router-dom';
 
 const SignUp = () => {
+
+  const [formData, setFormData] = useState([])
+
+  const handleFormChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    })
+  }
+
+  console.log(formData)
+
   return (
     <main className='grid place-items-center relative top-20'>
       <article className=''>
@@ -14,21 +26,21 @@ const SignUp = () => {
             <div className="mb-2 block">
               <Label htmlFor="name" value="Your name" />
             </div>
-            <TextInput id="name" type="text" placeholder="John Doe" required shadow />
+            <TextInput id="name" type="text" name='name' onChange={handleFormChange} placeholder="John Doe" required shadow />
           </div>
 
           <div>
             <div className="mb-2 block">
               <Label htmlFor="email2" value="Your email" />
             </div>
-            <TextInput id="email2" type="email" placeholder="name@gmail.com" required shadow />
+            <TextInput id="email2" type="email" name='email' onChange={handleFormChange} placeholder="name@gmail.com" required shadow />
           </div>
 
           <div>
             <div className="mb-2 block">
               <Label htmlFor="password2" value="Your password" />
             </div>
-            <TextInput id="password2" type="password" required shadow />
+            <TextInput id="password2" type="password" name='password' onChange={handleFormChange} required shadow />
           </div>
 
           <div className="flex items-center gap-2">

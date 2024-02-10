@@ -9,7 +9,7 @@ import * as cloudinary from "cloudinary/lib/v2";
 
 export default class ProductController {
     // Create Product function
-    xcreateProduct = expressAsyncHandler(
+    createProduct = expressAsyncHandler(
         async (req: CustomRequest, res: Response) => {
             const { name, sku, category, quantity, price, description } =
                 req.body;

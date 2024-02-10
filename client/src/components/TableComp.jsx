@@ -6,7 +6,7 @@ const TableComp = () => {
   return (
     <div className="overflow-x-auto shadow-xl pt-10">
       <button
-        className='bg-cyan-500 p-2 px-3 text-xs text-white float-right mr-5'
+        className='relative z-10 bg-cyan-500 p-2 px-3 text-xs text-white float-right mr-5 hover:cursor-pointer hover:bg-cyan-800'
       >
         Add New Product
       </button>
