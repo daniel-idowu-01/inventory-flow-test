@@ -6,7 +6,7 @@ const SignUp = () => {
   return (
     <main className='grid place-items-center relative top-20'>
       <article className=''>
-        <div className='relative top-3 font-bold shadow-md text-center bg-blue-500 w-[95%] mx-auto text-white p-5 rounded-md uppercase'>
+        <div className='relative top-3 font-bold shadow-md text-center bg-cyan-500 w-[95%] mx-auto text-white p-5 rounded-md uppercase'>
           create an account
         </div>
         <form className="flex max-w-md flex-col gap-4 shadow border p-10 w-96">
@@ -41,10 +41,10 @@ const SignUp = () => {
             </Label>
           </div>
 
-          <Button type="submit" className='bg-blue-500'>Sign Up</Button>
+          <Button type="submit" className='bg-cyan-500'>Sign Up</Button>
 
-          <span className='text-sm text-center'>
-            Already have an account? <Link to='/sign-in' className='text-blue-500 hover:underline'>Log In</Link>
+          <span className='text-sm text-center my-3'>
+            Already have an account? <Link to='/sign-in' className='text-cyan-500 hover:underline'>Log In</Link>
           </span>
         </form>
       </article>

@@ -6,7 +6,7 @@ const SignIn = () => {
   return (
     <main className='grid place-items-center relative top-20'>
       <article className=''>
-        <div className='relative top-3 font-bold shadow-md text-center bg-blue-500 w-[95%] mx-auto text-white p-5 rounded-md uppercase'>
+        <div className='relative top-3 font-bold shadow-md text-center bg-cyan-500 w-[95%] mx-auto text-white p-5 rounded-md uppercase'>
           login to your account
         </div>
         <form className="flex max-w-md flex-col gap-4 shadow border p-10 w-96">
@@ -29,16 +29,16 @@ const SignIn = () => {
             <Checkbox id="agree" />
             <Label htmlFor="agree" className="flex">
               Remember me&nbsp;
-              <Link to="#" className="hidden text-cyan-600 hover:underline dark:text-cyan-500">
+              <Link to="#" className="hidden text-cyan-500 hover:underline dark:text-cyan-500">
                 terms and conditions
               </Link>
             </Label>
           </div>
 
-          <Button type="submit" className='bg-blue-500'>Sign In</Button>
+          <Button type="submit" className='bg-cyan-500'>Sign In</Button>
 
-          <span className='text-sm text-center'>
-            Don't have an account? <Link to='/sign-up' className='text-blue-500 hover:underline'>Sign Up</Link>
+          <span className='text-sm text-center my-3'>
+            Don't have an account? <Link to='/sign-up' className='text-cyan-500 hover:underline'>Sign Up</Link>
           </span>
         </form>
       </article>
