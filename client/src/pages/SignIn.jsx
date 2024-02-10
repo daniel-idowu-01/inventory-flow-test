@@ -7,15 +7,9 @@ const SignIn = () => {
     <main className='grid place-items-center relative top-20'>
       <article className=''>
         <div className='relative top-3 font-bold shadow-md text-center bg-blue-500 w-[95%] mx-auto text-white p-5 rounded-md uppercase'>
-          create an account
+          login to your account
         </div>
-        <form className="flex max-w-md flex-col gap-4 shadow border p-10">
-          <div>
-            <div className="mb-2 block">
-              <Label htmlFor="name" value="Your name" />
-            </div>
-            <TextInput id="name" type="text" placeholder="John Doe" required shadow />
-          </div>
+        <form className="flex max-w-md flex-col gap-4 shadow border p-10 w-96">
 
           <div>
             <div className="mb-2 block">
@@ -34,17 +28,17 @@ const SignIn = () => {
           <div className="flex items-center gap-2">
             <Checkbox id="agree" />
             <Label htmlFor="agree" className="flex">
-              I agree with the&nbsp;
-              <Link to="#" className="text-cyan-600 hover:underline dark:text-cyan-500">
+              Remember me&nbsp;
+              <Link to="#" className="hidden text-cyan-600 hover:underline dark:text-cyan-500">
                 terms and conditions
               </Link>
             </Label>
           </div>
 
-          <Button type="submit" className='bg-blue-500'>Sign Up</Button>
+          <Button type="submit" className='bg-blue-500'>Sign In</Button>
 
           <span className='text-sm text-center'>
-            Already have an account? <Link to='/sign-in' className='text-blue-500 hover:underline'>Log In</Link>
+            Don't have an account? <Link to='/sign-up' className='text-blue-500 hover:underline'>Sign Up</Link>
           </span>
         </form>
       </article>

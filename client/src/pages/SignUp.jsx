@@ -9,7 +9,7 @@ const SignUp = () => {
         <div className='relative top-3 font-bold shadow-md text-center bg-blue-500 w-[95%] mx-auto text-white p-5 rounded-md uppercase'>
           create an account
         </div>
-        <form className="flex max-w-md flex-col gap-4 shadow border p-10">
+        <form className="flex max-w-md flex-col gap-4 shadow border p-10 w-96">
           <div>
             <div className="mb-2 block">
               <Label htmlFor="name" value="Your name" />
