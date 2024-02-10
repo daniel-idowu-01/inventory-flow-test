@@ -65,7 +65,7 @@ const Sidebar = () => {
             <Link
               to={link.link}
               key={link.id}
-              className='transition-all hover:bg-blue-500 hover:cursor-pointer w-full p-3 px-4 rounded-md flex items-center gap-3'
+              className='transition-all hover:bg-cyan-500 hover:cursor-pointer w-full p-3 px-4 rounded-md flex items-center gap-3'
             >
               {link.icon}
               <p>{link.name}</p>
