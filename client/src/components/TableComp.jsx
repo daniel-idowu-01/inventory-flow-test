@@ -1,12 +1,12 @@
 import React from 'react'
 import { Table } from 'flowbite-react';
-import { FaTrash, FaPlusSquare } from 'react-icons/fa'
+import { FaTrash } from 'react-icons/fa'
 
 const TableComp = () => {
   return (
     <div className="overflow-x-auto shadow-xl pt-10">
       <button
-        className='relative z-10 bg-cyan-500 p-2 px-3 text-xs text-white float-right mr-5 hover:cursor-pointer hover:bg-cyan-800'
+        className='relative bg-cyan-500 p-2 px-3 text-xs text-white md:float-right ml-3 md:mr-5 hover:cursor-pointer hover:bg-cyan-800'
       >
         Add New Product
       </button>
