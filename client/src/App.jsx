@@ -6,6 +6,7 @@ const Dashboard = lazy(() => import('./pages/Dashboard'))
 const ManageInventory = lazy(() => import('./pages/ManageInventory'))
 const SignUp = lazy(() => import('./pages/SignUp'))
 const SignIn = lazy(() => import('./pages/SignIn'))
+const CreateProduct = lazy(() => import('./pages/CreateProduct'))
 const DashboardComp = lazy(() => import('./components/DashboardComp'))
 
 function App() {
@@ -40,6 +41,17 @@ function App() {
                     <ManageInventory />
                   </Suspense>}
               />
+
+              {/* create product */}
+              <Route
+                path="/create-product"
+                element={
+                  <Suspense fallback={<div>Loading...</div>}>
+                    <CreateProduct />
+                  </Suspense>}
+              />
+
+
               <Route path="/profile" element={<Profile />} />
             </Route>
 

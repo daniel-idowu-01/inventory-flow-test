@@ -1,15 +1,17 @@
 import React from 'react'
 import { Table } from 'flowbite-react';
 import { FaTrash } from 'react-icons/fa'
+import { Link } from 'react-router-dom';
 
 const TableComp = () => {
   return (
     <div className="overflow-x-auto shadow-xl pt-10">
-      <button
-        className='relative bg-cyan-500 p-2 px-3 text-xs text-white md:float-right ml-3 md:mr-5 hover:cursor-pointer hover:bg-cyan-800'
+      <Link
+        to='/create-product'
+        className='relative md:z-10 bg-cyan-500 p-2 px-3 text-xs text-white md:float-right ml-3 md:mr-5 hover:cursor-pointer hover:bg-cyan-800'
       >
         Add New Product
-      </button>
+      </Link>
       <Table hoverable>
         <Table.Head>
           <Table.HeadCell>Product name</Table.HeadCell>
