@@ -17,9 +17,9 @@ const CreateProduct = () => {
     <main className='relative top-5 md:absolute md:left-20 lg:left-[25%] lg:top-10 h-full md:w-[75%]'>
       <h2 className='text-2xl text-cyan-500 font-bold'>Create Product</h2>
 
-      <form className="w-[70%] mt-5 flex flex-col gap-5">
+      <form className="md:w-[70%] mt-5 flex flex-col gap-5 p-5 md:p-0">
         {/* row one */}
-        <article className='flex justify-between'>
+        <article className='flex flex-col gap-5 md:flex-row justify-between'>
           <div>
             <div className="mb-2 block">
               <Label htmlFor="name" value="Your name" />
@@ -28,7 +28,7 @@ const CreateProduct = () => {
               id="name"
               type="text"
               name='name'
-              className='w-80'
+              className='w-full md:w-80'
               onChange={handleFormChange}
               placeholder="John Doe"
               required shadow
@@ -43,7 +43,7 @@ const CreateProduct = () => {
               id="sku"
               type="text"
               name='sku'
-              className='w-80'
+              className='w-full md:w-80'
               onChange={handleFormChange}
               placeholder="sku"
               required shadow
@@ -52,12 +52,12 @@ const CreateProduct = () => {
         </article>
 
         {/* row two */}
-        <article className='flex justify-between'>
+        <article className='flex flex-col md:flex-row gap-5 justify-between'>
           <div className="max-w-md">
             <div className="mb-2 block">
               <Label htmlFor="countries" value="Select category" />
             </div>
-            <Select id="countries" className='w-80' required>
+            <Select id="countries" className='w-full md:w-80' required>
               <option>United States</option>
               <option>Canada</option>
               <option>France</option>
@@ -72,7 +72,7 @@ const CreateProduct = () => {
             <TextInput
               id="quantity"
               type="text"
-              className='w-80'
+              className='w-full md:w-80'
               name='quantity'
               onChange={handleFormChange}
               placeholder="Quantity"
