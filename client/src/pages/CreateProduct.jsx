@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Button, Label, TextInput, Select, Textarea } from 'flowbite-react';
+import data from '../data/categoryData.json'
 import { Link } from 'react-router-dom';
 
 const CreateProduct = () => {
@@ -12,6 +13,8 @@ const CreateProduct = () => {
       [e.target.name]: e.target.value
     })
   }
+
+  console.log(formData)
 
   return (
     <main className='relative top-5 md:absolute md:left-20 lg:left-[25%] lg:top-10 h-full md:w-[75%] p-5 md:p-0'>
@@ -57,12 +60,13 @@ const CreateProduct = () => {
             <div className="mb-2 block">
               <Label htmlFor="countries" value="Select category" />
             </div>
-            <Select id="countries" className='w-full md:w-80' required>
-              <option>United States</option>
-              <option>Canada</option>
-              <option>France</option>
-              <option>Germany</option>
-            </Select>
+              <Select id="countries" className='w-full md:w-80' name='category'onChange={handleFormChange} required>
+                {data.category.map(category => (
+                  <option id={category.value} value={category.value}>
+                    {category.title}
+                  </option>
+                ))}
+              </Select>
           </div>
             
           <div>
@@ -89,7 +93,10 @@ const CreateProduct = () => {
           <Textarea
             id="comment"
             placeholder="description..."
-            required rows={4}
+            required
+            rows={4}
+            name='description'
+            onChange={handleFormChange}
           />
         </div>
 
