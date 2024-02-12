@@ -1,0 +1,84 @@
+{
+  "category": [
+    {
+      "title": "Food and Beverage",
+      "value": "Food and Beverage"
+    },
+    {
+      "title": "Retail Products",
+      "value": "Retail Products"
+    },
+    {
+      "title": "Healthcare and Pharmaceuticals",
+      "value": "Healthcare and Pharmaceuticals"
+    },
+    {
+      "title": "Automotive Parts",
+      "value": "Automotive Parts"
+    },
+    {
+      "title": "Electronics and Technology",
+      "value": "Electronics and Technology"
+    },
+    {
+      "title": "Construction and Building Materials",
+      "value": "Construction and Building Materials"
+    },
+    {
+      "title": "Industrial and Manufacturing Parts",
+      "value": "Industrial and Manufacturing Parts"
+    },
+    {
+      "title": "Furniture and Home Decor",
+      "value": "Furniture and Home Decor"
+    },
+    {
+      "title": "Books and Media",
+      "value": "Books and Media"
+    },
+    {
+      "title": "Apparel and Fashion",
+      "value": "Apparel and Fashion"
+    },
+    {
+      "title": "Agricultural Products",
+      "value": "Agricultural Products"
+    },
+    {
+      "title": "Beauty and Cosmetics",
+      "value": "Beauty and Cosmetics"
+    },
+    {
+      "title": "Jewelry and Accessories",
+      "value": "Jewelry and Accessories"
+    },
+    {
+      "title": "Sporting Goods and Equipment",
+      "value": "Sporting Goods and Equipment"
+    },
+    {
+      "title": "Toys and Games",
+      "value": "Toys and Games"
+    },
+    {
+      "title": "Chemicals and Hazardous Materials",
+      "value": "Chemicals and Hazardous Materials"
+    },
+    {
+      "title": "Wine and Liquor",
+      "value": "Wine and Liquor"
+    },
+    {
+      "title": "Office Supplies",
+      "value": "Office Supplies"
+    },
+    {
+      "title": "Pet Supplies",
+      "value": "Pet Supplies"
+    },
+    {
+      "title": "Electrical and Plumbing Supplies",
+      "value": "Electrical and Plumbing Supplies"
+    }
+  ]
+}
