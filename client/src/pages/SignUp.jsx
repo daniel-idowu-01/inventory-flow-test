@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Button, Checkbox, Label, TextInput } from 'flowbite-react';
 import { Link } from 'react-router-dom';
 
 const SignUp = () => {
 
   const [formData, setFormData] = useState([])
+  const [loading, setIsLoading] = useState(false)
 
   const handleFormChange = (e) => {
     setFormData({
@@ -13,32 +14,85 @@ const SignUp = () => {
     })
   }
 
+  // to submit form data
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    setIsLoading(true)
+    const response = await fetch('http://localhost:3000/api/users/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData)
+      });
+
+  
+    const data = await response.json();
+
+    /* if (data._id) {
+      setIsLoading(false)
+      navigate('/products')
+    } else {
+      setIsLoading(false)
+      setError('Please fill all fields!')
+    } */
+  }
+
   return (
     <main className='grid place-items-center relative top-20'>
       <article className=''>
-        <div className='relative top-3 font-bold shadow-md text-center bg-cyan-500 w-[95%] mx-auto text-white p-5 rounded-md uppercase'>
+        <div
+          className='relative top-3 font-bold shadow-md text-center bg-cyan-500 w-[95%] mx-auto text-white p-5 rounded-md uppercase'
+        >
           create an account
         </div>
-        <form className="flex max-w-md flex-col gap-4 shadow border p-10 w-96">
+        <form
+          onSubmit={handleSubmit}
+          className="flex max-w-md flex-col gap-4 shadow border p-10 w-96"
+        >
           <div>
             <div className="mb-2 block">
               <Label htmlFor="name" value="Your name" />
             </div>
-            <TextInput id="name" type="text" name='name' onChange={handleFormChange} placeholder="John Doe" required shadow />
+            <TextInput
+              id="name"
+              type="text"
+              name='name'
+              onChange={handleFormChange}
+              placeholder="John Doe"
+              required
+              shadow
+            />
           </div>
 
           <div>
             <div className="mb-2 block">
-              <Label htmlFor="email2" value="Your email" />
+              <Label htmlFor="email" value="Your email" />
             </div>
-            <TextInput id="email2" type="email" name='email' onChange={handleFormChange} placeholder="name@gmail.com" required shadow />
+            <TextInput
+              id="email"
+              type="email"
+              name='email'
+              onChange={handleFormChange}
+              placeholder="name@gmail.com"
+              required
+              shadow
+            />
           </div>
 
           <div>
             <div className="mb-2 block">
-              <Label htmlFor="password2" value="Your password" />
+              <Label htmlFor="password" value="Your password" />
             </div>
-            <TextInput id="password2" type="password" name='password' onChange={handleFormChange} required shadow />
+            <TextInput
+              id="password"
+              type="password"
+              name='password'
+              onChange={handleFormChange}
+              required
+              shadow
+            />
           </div>
 
           <div className="flex items-center gap-2">
