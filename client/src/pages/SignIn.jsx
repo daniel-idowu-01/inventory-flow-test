@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import axios from 'axios'
 import { Button, Checkbox, Label, TextInput, Spinner } from 'flowbite-react';
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -21,24 +22,32 @@ const SignIn = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    setIsLoading(true)
-    const response = await fetch('http://localhost:3000/api/users/login', {
-        method: 'POST',
+    setIsLoading(true);
+    try {
+      const response = await axios.post('http://localhost:3000/api/users/login', formData, {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData)
       });
-    setIsLoading(false)
-  
-    const data = await response.json();
 
-    if (data._id) {
-      navigate('/')
-    } else {
-      setError('Please fill all fields!')
+      setIsLoading(false);
+
+      const data = response.data;
+      console.log(data)
+      // console.log(data)
+
+      /* if (data._id) {
+          navigate('/')
+      } else {
+          setError('Please fill all fields!')
+      } */
+    } catch (error) {
+      console.error('Error:', error);
+      // Handle error
     }
-  }
+  };
+
+  console.log(document.cookie)
 
   return (
     <main className='grid place-items-center relative top-20'>

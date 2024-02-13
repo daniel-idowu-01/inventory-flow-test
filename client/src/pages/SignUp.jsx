@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import axios from 'axios';
 import { Button, Checkbox, Label, TextInput, Spinner } from 'flowbite-react';
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -21,24 +22,29 @@ const SignUp = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    setIsLoading(true)
-    const response = await fetch('http://localhost:3000/api/users/register', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData)
-    });
-    setIsLoading(false)
+    setIsLoading(true);
+    try {
+        const response = await axios.post('http://localhost:3000/api/users/register', formData, {
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+        
+        setIsLoading(false);
+        
+        const data = response.data;
+        // console.log(data)
 
-    const data = await response.json();
-
-    if (data._id) {
-      navigate('/sign-in')
-    } else {
-      setError('Please fill all fields!')
+        /* if (data._id) {
+            navigate('/')
+        } else {
+            setError('Please fill all fields!')
+        } */
+    } catch (error) {
+        console.error('Error:', error);
+        // Handle error
     }
-  }
+};
 
   return (
     <main className='grid place-items-center relative top-20'>
@@ -108,7 +114,7 @@ const SignUp = () => {
           </div>
 
           <Button type="submit" className='bg-cyan-500'>
-            {loading ? <Spinner aria-label="Default status example" /> : 'Sign Up'} 
+            {loading ? <Spinner aria-label="Default status example" /> : 'Sign Up'}
           </Button>
 
           <span className='text-sm text-center my-3'>
