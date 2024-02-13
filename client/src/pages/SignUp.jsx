@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react'
-import { Button, Checkbox, Label, TextInput } from 'flowbite-react';
-import { Link } from 'react-router-dom';
+import { Button, Checkbox, Label, TextInput, Spinner } from 'flowbite-react';
+import { Link, useNavigate } from 'react-router-dom';
 
 const SignUp = () => {
 
+  const navigate = useNavigate()
   const [formData, setFormData] = useState([])
   const [loading, setIsLoading] = useState(false)
+  const [error, setError] = useState('')
 
+  // to update form data
   const handleFormChange = (e) => {
     setFormData({
       ...formData,
@@ -25,18 +28,16 @@ const SignUp = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(formData)
-      });
+    });
+    setIsLoading(false)
 
-  
     const data = await response.json();
 
-    /* if (data._id) {
-      setIsLoading(false)
-      navigate('/products')
+    if (data._id) {
+      navigate('/sign-in')
     } else {
-      setIsLoading(false)
       setError('Please fill all fields!')
-    } */
+    }
   }
 
   return (
@@ -90,6 +91,7 @@ const SignUp = () => {
               type="password"
               name='password'
               onChange={handleFormChange}
+              placeholder='********'
               required
               shadow
             />
@@ -105,10 +107,14 @@ const SignUp = () => {
             </Label>
           </div>
 
-          <Button type="submit" className='bg-cyan-500'>Sign Up</Button>
+          <Button type="submit" className='bg-cyan-500'>
+            {loading ? <Spinner aria-label="Default status example" /> : 'Sign Up'} 
+          </Button>
 
           <span className='text-sm text-center my-3'>
-            Already have an account? <Link to='/sign-in' className='text-cyan-500 hover:underline'>Log In</Link>
+            Already have an account? <Link to='/sign-in' className='text-cyan-500 hover:underline'>
+              Log In
+            </Link>
           </span>
         </form>
       </article>

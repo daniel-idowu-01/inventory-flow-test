@@ -57,8 +57,8 @@ const DashboardComp = () => {
             className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 place-items-stretch md:place-items-center p-10'
           >
             {
-              dashboardStats.map(stat => (
-                <StatsComp {...stat} />
+              dashboardStats.map((stat, index) => (
+                <StatsComp key={index} {...stat} />
               ))
             }
           </article>

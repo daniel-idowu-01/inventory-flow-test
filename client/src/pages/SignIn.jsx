@@ -1,16 +1,43 @@
 import React, { useState } from 'react'
-import { Button, Checkbox, Label, TextInput } from 'flowbite-react';
-import { Link } from 'react-router-dom';
+import { Button, Checkbox, Label, TextInput, Spinner } from 'flowbite-react';
+import { Link, useNavigate } from 'react-router-dom';
 
 const SignIn = () => {
 
+  const navigate = useNavigate()
   const [formData, setFormData] = useState([])
+  const [loading, setIsLoading] = useState(false)
+  const [error, setError] = useState('')
 
+  // to update form data
   const handleFormChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
     })
+  }
+
+  // to submit form data
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    setIsLoading(true)
+    const response = await fetch('http://localhost:3000/api/users/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData)
+      });
+    setIsLoading(false)
+  
+    const data = await response.json();
+
+    if (data._id) {
+      navigate('/')
+    } else {
+      setError('Please fill all fields!')
+    }
   }
 
   return (
@@ -19,33 +46,56 @@ const SignIn = () => {
         <div className='relative top-3 font-bold shadow-md text-center bg-cyan-500 w-[95%] mx-auto text-white p-5 rounded-md uppercase'>
           login to your account
         </div>
-        <form className="flex max-w-md flex-col gap-4 shadow border p-10 w-96">
+        <form
+          onSubmit={handleSubmit}
+          className="flex max-w-md flex-col gap-4 shadow border p-10 w-96">
 
           <div>
             <div className="mb-2 block">
-              <Label htmlFor="email2" value="Your email" />
+              <Label htmlFor="email" value="Your email" />
             </div>
-            <TextInput id="email2" type="email" placeholder="name@gmail.com" name='email' onChange={handleFormChange} required shadow />
+            <TextInput
+              id="email"
+              type="email"
+              placeholder="name@gmail.com"
+              name='email'
+              onChange={handleFormChange}
+              required
+              shadow
+            />
           </div>
 
           <div>
             <div className="mb-2 block">
-              <Label htmlFor="password2" value="Your password" />
+              <Label htmlFor="password" value="Your password" />
             </div>
-            <TextInput id="password2" type="password" name='password' onChange={handleFormChange} required shadow />
+            <TextInput
+              id="password"
+              type="password"
+              name='password'
+              onChange={handleFormChange}
+              placeholder='********'
+              required
+              shadow
+            />
           </div>
 
           <div className="flex items-center gap-2">
             <Checkbox id="agree" />
             <Label htmlFor="agree" className="flex">
               Remember me&nbsp;
-              <Link to="#" className="hidden text-cyan-500 hover:underline dark:text-cyan-500">
+              <Link
+                to="#"
+                className="hidden text-cyan-500 hover:underline dark:text-cyan-500"
+              >
                 terms and conditions
               </Link>
             </Label>
           </div>
 
-          <Button type="submit" className='bg-cyan-500'>Sign In</Button>
+          <Button type="submit" className='bg-cyan-500'>
+            {loading ? <Spinner aria-label="Default status example" /> : 'Sign In'}
+          </Button>
 
           <span className='text-sm text-center my-3'>
             Don't have an account? <Link to='/sign-up' className='text-cyan-500 hover:underline'>Sign Up</Link>
