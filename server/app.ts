@@ -20,7 +20,11 @@ const app = express();
 app.use(helmet());
 
 // CORS middleware
-app.use(cors());
+// Allow requests from a specific origin and include credentials
+app.use(cors({
+  origin: 'http://localhost:5173',
+  credentials: true
+}));
 
 // Middlewares
 app.use(express.json());

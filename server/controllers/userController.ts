@@ -95,7 +95,7 @@ export default class UserController {
         // Send HTTP-only cookie
         res.cookie("token", token, {
             path: "/",
-            httpOnly: true,
+            httpOnly: false,
             expires: new Date(Date.now() + 1000 * 86400), // 1 Day
             sameSite: "none",
             secure: true,

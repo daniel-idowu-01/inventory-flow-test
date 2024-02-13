@@ -25,6 +25,7 @@ const SignIn = () => {
     setIsLoading(true);
     try {
       const response = await axios.post('http://localhost:3000/api/users/login', formData, {
+        withCredentials: true,
         headers: {
           'Content-Type': 'application/json',
         },
@@ -33,21 +34,18 @@ const SignIn = () => {
       setIsLoading(false);
 
       const data = response.data;
-      console.log(data)
       // console.log(data)
 
-      /* if (data._id) {
+      if (data._id) {
           navigate('/')
       } else {
           setError('Please fill all fields!')
-      } */
+      }
     } catch (error) {
       console.error('Error:', error);
       // Handle error
     }
   };
-
-  console.log(document.cookie)
 
   return (
     <main className='grid place-items-center relative top-20'>
