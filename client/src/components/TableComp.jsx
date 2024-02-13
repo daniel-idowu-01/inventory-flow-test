@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { Table } from 'flowbite-react';
 import { FaTrash } from 'react-icons/fa'
 import { Link } from 'react-router-dom';
 import axios from 'axios'
+import DataContext from '../context/DataContext';
 
 const TableComp = () => {
 
-  const [products, setProducts] = useState([])
+  const { products, setProducts } = useContext(DataContext);
 
   useEffect(() => {
     // Fetch data using Axios with credentials
@@ -23,8 +24,6 @@ const TableComp = () => {
 
     fetchData();
   }, []);
-
-  console.log(products)
 
   return (
     <div className="overflow-x-auto shadow-xl pt-10">
@@ -51,7 +50,10 @@ const TableComp = () => {
         <Table.Body className="divide-y">
           {
             products.map(product => (
-              <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
+              <Table.Row
+                id={product._id}
+                className="bg-white dark:border-gray-700 dark:bg-gray-800"
+              >
                 <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
                   {product.name}
                 </Table.Cell>
