@@ -25,7 +25,7 @@ const CreateProduct = () => {
         <article className='flex flex-col gap-5 md:flex-row justify-between'>
           <div>
             <div className="mb-2 block">
-              <Label htmlFor="name" value="Your name" />
+              <Label htmlFor="name" value="Product name" />
             </div>
             <TextInput
               id="name"
@@ -60,15 +60,15 @@ const CreateProduct = () => {
             <div className="mb-2 block">
               <Label htmlFor="countries" value="Select category" />
             </div>
-              <Select id="countries" className='w-full md:w-80' name='category'onChange={handleFormChange} required>
-                {data.category.map(category => (
-                  <option id={category.value} value={category.value}>
-                    {category.title}
-                  </option>
-                ))}
-              </Select>
+            <Select id="countries" className='w-full md:w-80' name='category' onChange={handleFormChange} required>
+              {data.category.map(category => (
+                <option id={category.value} value={category.value}>
+                  {category.title}
+                </option>
+              ))}
+            </Select>
           </div>
-            
+
           <div>
             <div className="mb-2 block">
               <Label htmlFor="quantity" value="Quantity" />
@@ -106,7 +106,7 @@ const CreateProduct = () => {
         >
           Create New Product
         </Button>
-        </form>
+      </form>
     </main>
   )
 }

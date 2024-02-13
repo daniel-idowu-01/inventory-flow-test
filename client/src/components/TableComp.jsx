@@ -62,9 +62,12 @@ const TableComp = () => {
                 <Table.Cell>{product.quantity}</Table.Cell>
                 <Table.Cell>{product.price}</Table.Cell>
                 <Table.Cell>
-                  <a href="#" className="font-medium text-cyan-600 hover:underline dark:text-cyan-500">
+                  <Link
+                    to={`/edit-product/${product._id}`}
+                    className="font-medium text-cyan-600 hover:underline dark:text-cyan-500"
+                  >
                     Edit
-                  </a>
+                  </Link>
                 </Table.Cell>
                 <Table.Cell>
                   <FaTrash />
