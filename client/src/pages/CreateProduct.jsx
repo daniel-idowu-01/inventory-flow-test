@@ -14,13 +14,42 @@ const CreateProduct = () => {
     })
   }
 
-  console.log(formData)
+  // to submit form data
+const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  setIsLoading(true);
+
+  try {
+    const response = await axios.patch(`/api/products/${id}`, formData, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (response.data._id) {
+      setIsLoading(false);
+      navigate('/products');
+    } else {
+      setIsLoading(false);
+      setError('Please fill all fields!');
+    }
+  } catch (error) {
+    setIsLoading(false);
+    setError('An error occurred while processing your request.');
+    console.error('Error submitting form data:', error);
+  }
+};
+
 
   return (
     <main className='relative top-5 md:absolute md:left-20 lg:left-[25%] lg:top-10 h-full md:w-[75%] p-5 md:p-0'>
       <h2 className='text-2xl text-cyan-500 font-bold'>Create Product</h2>
 
-      <form className="md:w-[70%] mt-5 flex flex-col gap-5">
+      <form
+        onSubmit={handleSubmit}
+        className="md:w-[70%] mt-5 flex flex-col gap-5"
+      >
         {/* row one */}
         <article className='flex flex-col gap-5 md:flex-row justify-between'>
           <div>
