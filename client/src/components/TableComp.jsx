@@ -70,7 +70,13 @@ const TableComp = () => {
                   </Link>
                 </Table.Cell>
                 <Table.Cell>
-                  <FaTrash />
+                  <Link
+                    to={`/delete-product/${product._id}`}
+                  >
+                    <FaTrash
+                      className='hover:cursor-pointer'
+                    />
+                  </Link>
                 </Table.Cell>
               </Table.Row>
             ))

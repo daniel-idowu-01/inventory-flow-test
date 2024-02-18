@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Button, Label, TextInput, Select, Textarea, Spinner } from 'flowbite-react';
 import data from '../data/categoryData.json'
-import { Link, useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios'
 
 const EditProduct = () => {

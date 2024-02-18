@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import { Button, Label, TextInput, Select, Textarea, Spinner } from 'flowbite-react';
 import data from '../data/categoryData.json'
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const CreateProduct = () => {
 

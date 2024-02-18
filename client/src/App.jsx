@@ -8,6 +8,7 @@ const SignUp = lazy(() => import('./pages/SignUp'))
 const SignIn = lazy(() => import('./pages/SignIn'))
 const CreateProduct = lazy(() => import('./pages/CreateProduct'))
 const EditProduct = lazy(() => import('./pages/EditProduct'))
+const DeleteProduct = lazy(() => import('./pages/DeleteProduct'))
 const DashboardComp = lazy(() => import('./components/DashboardComp'))
 
 function App() {
@@ -58,6 +59,15 @@ function App() {
                 element={
                   <Suspense fallback={<div>Loading...</div>}>
                     <EditProduct />
+                  </Suspense>}
+              />
+
+              {/* delete product */}
+              <Route
+                path="/delete-product/:id"
+                element={
+                  <Suspense fallback={<div>Loading...</div>}>
+                    <DeleteProduct />
                   </Suspense>}
               />
 
