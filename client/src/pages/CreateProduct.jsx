@@ -48,8 +48,12 @@ const CreateProduct = () => {
 
 
   return (
-    <main className='relative top-5 md:absolute md:left-20 lg:left-[25%] lg:top-10 h-full md:w-[75%] p-5 md:p-0'>
-      <h2 className='text-2xl text-cyan-500 font-bold'>Create Product</h2>
+    <main
+      className='relative top-5 md:absolute md:left-20 lg:left-[25%] lg:top-10 h-full md:w-[75%] p-5 md:p-0'
+    >
+      <h2 className='text-2xl text-cyan-500 font-bold'>
+        Create Product
+      </h2>
 
       <form
         onSubmit={handleSubmit}

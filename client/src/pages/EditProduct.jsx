@@ -67,12 +67,17 @@ const EditProduct = () => {
   };
 
   return (
-    <main className='relative top-5 md:absolute md:left-20 lg:left-[25%] lg:top-10 h-full md:w-[75%] p-5 md:p-0'>
-      <h2 className='text-2xl text-cyan-500 font-bold'>Update Product</h2>
+    <main
+      className='relative top-5 md:absolute md:left-20 lg:left-[25%] lg:top-10 h-full md:w-[75%] p-5 md:p-0'
+    >
+      <h2 className='text-2xl text-cyan-500 font-bold'>
+        Update Product
+      </h2>
 
       <form
         onSubmit={handleSubmit}
-        className="md:w-[70%] mt-5 flex flex-col gap-5">
+        className="md:w-[70%] mt-5 flex flex-col gap-5"
+      >
         {/* row one */}
         <article className='flex flex-col gap-5 md:flex-row justify-between'>
           <div>
