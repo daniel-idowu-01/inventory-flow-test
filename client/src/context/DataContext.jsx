@@ -4,19 +4,9 @@ import { createContext, useState } from "react";
 
 export function DataProvider({ children }) {
 
-    const [sideBar, setSideBar] = useState(false)
-    const [products, setProducts] = useState([])
-
-    return (
-        <DataContext.Provider value={{ sideBar, setSideBar, products, setProducts }}>
-            {children} 
-        </DataContext.Provider>
-    )
-}
-
-export default DataContext
-
-/* const [totalPrice, setTotalPrice] = useState(0)
+  const [sideBar, setSideBar] = useState(false)
+  const [products, setProducts] = useState([])
+  const [totalPrice, setTotalPrice] = useState(0)
   const [totalQuantity, setTotalQuantity] = useState(0)
 
   const numberOfProducts = products.length;
@@ -78,4 +68,14 @@ export default DataContext
 
     // Return the object containing the total price for each category.
     return totalQuantityPerCategory;
-  } */
+  }
+
+    return (
+        <DataContext.Provider value={{ sideBar, setSideBar, products, setProducts, calculateTotalPrice, calculateTotalQuantity, totalPrice, totalQuantity }}>
+            {children} 
+        </DataContext.Provider>
+    )
+}
+
+export default DataContext
+

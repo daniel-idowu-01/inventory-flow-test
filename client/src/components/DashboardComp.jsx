@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import StatsComp from './StatsComp'
 import TopNav from './TopNav';
 import BarChartComp from './BarChartComp';
@@ -8,22 +8,25 @@ import { MdOutlineInventory2 } from "react-icons/md";
 import { ImStatsBars } from "react-icons/im";
 import { FaStoreAlt } from "react-icons/fa";
 import { FiUserPlus } from "react-icons/fi";
+import DataContext from '../context/DataContext';
 
 const DashboardComp = () => {
+
+  const { totalPrice, totalQuantity } = useContext(DataContext)
 
   // data for top dashboard stats
   const dashboardStats = [
     {
-      title: 'Bookings',
-      value: '234',
+      title: 'Inventory Value',
+      value: `$${totalPrice}`,
       percent: '+55',
       time: 'week',
       icon: <MdOutlineInventory2 />,
       bg_color: 'bg-[#344767]'
     },
     {
-      title: "Today's users",
-      value: '43',
+      title: "Inventory Count",
+      value: totalQuantity,
       percent: '+3',
       time: 'month',
       icon: <ImStatsBars />,
@@ -90,8 +93,8 @@ const DashboardComp = () => {
                 <LineChartComp />
               </div>
 
-                <div className='shadow-xl px-10 py-5 rounded-b-xl'>
-                  <p className='text-lg font-bold opacity-80'>Daily Sales</p>
+              <div className='shadow-xl px-10 py-5 rounded-b-xl'>
+                <p className='text-lg font-bold opacity-80'>Daily Sales</p>
                 <p className='opacity-50'>(+15%) increase in today's sales</p>
                 <hr className='w-[80%] mx-auto my-3' />
                 <div className='flex items-center gap-1 opacity-30'>
