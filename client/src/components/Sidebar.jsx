@@ -22,7 +22,7 @@ const Sidebar = () => {
     {
       id: 2,
       icon: <FaList className='text-xl' />,
-      name: 'Tables',
+      name: 'Manage Products',
       link: '/manage'
     },
     {

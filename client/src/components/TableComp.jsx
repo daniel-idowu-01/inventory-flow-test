@@ -51,7 +51,7 @@ const TableComp = () => {
           {
             products.map(product => (
               <Table.Row
-                id={product._id}
+                key={product._id}
                 className="bg-white dark:border-gray-700 dark:bg-gray-800"
               >
                 <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">

@@ -1,11 +1,15 @@
 import React, { useState } from 'react'
-import { Button, Label, TextInput, Select, Textarea } from 'flowbite-react';
+import axios from 'axios'
+import { Button, Label, TextInput, Select, Textarea, Spinner } from 'flowbite-react';
 import data from '../data/categoryData.json'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const CreateProduct = () => {
 
+  const navigate = useNavigate()
   const [formData, setFormData] = useState([])
+  const [loading, setIsLoading] = useState(false)
+  const [error, setError] = useState('')
 
   const handleFormChange = (e) => {
     setFormData({
@@ -15,31 +19,32 @@ const CreateProduct = () => {
   }
 
   // to submit form data
-const handleSubmit = async (e) => {
-  e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  setIsLoading(true);
+    setIsLoading(true);
 
-  try {
-    const response = await axios.patch(`/api/products/${id}`, formData, {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
+    try {
+      const response = await axios.post(`http://localhost:3000/api/products`, formData, {
+        withCredentials: true,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
 
-    if (response.data._id) {
+      if (response.data._id) {
+        setIsLoading(false);
+        navigate('/manage');
+      } else {
+        setIsLoading(false);
+        setError('Please fill all fields!');
+      }
+    } catch (error) {
       setIsLoading(false);
-      navigate('/products');
-    } else {
-      setIsLoading(false);
-      setError('Please fill all fields!');
+      setError('An error occurred while processing your request.');
+      console.error('Error submitting form data:', error);
     }
-  } catch (error) {
-    setIsLoading(false);
-    setError('An error occurred while processing your request.');
-    console.error('Error submitting form data:', error);
-  }
-};
+  };
 
 
   return (
@@ -84,20 +89,21 @@ const handleSubmit = async (e) => {
         </article>
 
         {/* row two */}
-        <article className='flex flex-col md:flex-row gap-5 justify-between'>
-          <div className="max-w-md">
-            <div className="mb-2 block">
-              <Label htmlFor="countries" value="Select category" />
-            </div>
-            <Select id="countries" className='w-full md:w-80' name='category' onChange={handleFormChange} required>
-              {data.category.map(category => (
-                <option id={category.value} value={category.value}>
-                  {category.title}
-                </option>
-              ))}
-            </Select>
+        <div className="w-full">
+          <div className="mb-2 block">
+            <Label htmlFor="countries" value="Select category" />
           </div>
+          <Select id="countries" className='w-full' name='category' onChange={handleFormChange} required>
+            {data.category.map(category => (
+              <option id={category.value} value={category.value}>
+                {category.title}
+              </option>
+            ))}
+          </Select>
+        </div>
 
+        {/* row three */}
+        <article className='flex flex-col md:flex-row gap-5 justify-between'>
           <div>
             <div className="mb-2 block">
               <Label htmlFor="quantity" value="Quantity" />
@@ -112,9 +118,24 @@ const handleSubmit = async (e) => {
               required shadow
             />
           </div>
+
+          <div>
+            <div className="mb-2 block">
+              <Label htmlFor="price" value="Price" />
+            </div>
+            <TextInput
+              id="price"
+              type="text"
+              className='w-full md:w-80'
+              name='price'
+              onChange={handleFormChange}
+              placeholder="Price"
+              required shadow
+            />
+          </div>
         </article>
 
-        {/* third row */}
+        {/* row four */}
         <div className="w-full">
           <div className="mb-2 block">
             <Label htmlFor="comment" value="Product description" />
@@ -133,7 +154,7 @@ const handleSubmit = async (e) => {
           type="submit"
           className='bg-cyan-500'
         >
-          Create New Product
+          {loading ? <Spinner aria-label="Default status example" /> : 'Create Product'}
         </Button>
       </form>
     </main>

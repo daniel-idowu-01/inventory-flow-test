@@ -1,15 +1,19 @@
 import React, { useState, useEffect } from 'react'
-import { Button, Label, TextInput, Select, Textarea } from 'flowbite-react';
+import { Button, Label, TextInput, Select, Textarea, Spinner } from 'flowbite-react';
 import data from '../data/categoryData.json'
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios'
 
 const EditProduct = () => {
 
   const { id } = useParams();
+  const navigate = useNavigate()
   const [formData, setFormData] = useState([])
   const [productInfo, setProductInfo] = useState([])
+  const [loading, setIsLoading] = useState(false)
+  const [error, setError] = useState('')
 
+  // to get the product values
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -26,8 +30,7 @@ const EditProduct = () => {
     fetchData();
   }, [])
 
-  console.log(productInfo)
-
+  // function to update the product details
   const handleFormChange = (e) => {
     setFormData({
       ...formData,
@@ -42,7 +45,8 @@ const EditProduct = () => {
     setIsLoading(true);
 
     try {
-      const response = await axios.patch(`/api/products/${id}`, formData, {
+      const response = await axios.patch(`http://localhost:3000/api/products/${id}`, formData, {
+        withCredentials: true,
         headers: {
           'Content-Type': 'application/json',
         },
@@ -50,7 +54,7 @@ const EditProduct = () => {
 
       if (response.data._id) {
         setIsLoading(false);
-        navigate('/products');
+        navigate('/manage');
       } else {
         setIsLoading(false);
         setError('Please fill all fields!');
@@ -79,7 +83,7 @@ const EditProduct = () => {
               id="name"
               type="text"
               name='name'
-              value={productInfo.name}
+              defaultValue={productInfo.name}
               className='w-full md:w-80'
               onChange={handleFormChange}
               placeholder="John Doe"
@@ -95,7 +99,7 @@ const EditProduct = () => {
               id="sku"
               type="text"
               name='sku'
-              value={productInfo.sku}
+              defaultValue={productInfo.sku}
               className='w-full md:w-80'
               onChange={handleFormChange}
               placeholder="sku"
@@ -114,7 +118,7 @@ const EditProduct = () => {
               id="countries"
               className='w-full md:w-80'
               name='category'
-              value={productInfo.category}
+              defaultValue={productInfo.category}
               onChange={handleFormChange}
               required
             >
@@ -135,7 +139,7 @@ const EditProduct = () => {
               type="text"
               className='w-full md:w-80'
               name='quantity'
-              value={productInfo.quantity}
+              defaultValue={productInfo.quantity}
               onChange={handleFormChange}
               placeholder="Quantity"
               required shadow
@@ -154,7 +158,7 @@ const EditProduct = () => {
             required
             rows={4}
             name='description'
-            value={productInfo.description}
+            defaultValue={productInfo.description}
             onChange={handleFormChange}
           />
         </div>
@@ -163,7 +167,7 @@ const EditProduct = () => {
           type="submit"
           className='bg-cyan-500'
         >
-          Update Product
+          {loading ? <Spinner aria-label="Default status example" /> : 'Update Product'}
         </Button>
       </form>
     </main>
