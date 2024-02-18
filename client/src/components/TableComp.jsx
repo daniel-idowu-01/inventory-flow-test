@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react'
-import { Table } from 'flowbite-react';
+import { Table, Spinner } from 'flowbite-react';
 import { FaTrash } from 'react-icons/fa'
 import { Link } from 'react-router-dom';
 import axios from 'axios'
@@ -8,8 +8,10 @@ import DataContext from '../context/DataContext';
 const TableComp = () => {
 
   const { products, setProducts } = useContext(DataContext);
+  const [loading, setIsLoading] = useState(false)
 
   useEffect(() => {
+    setIsLoading(true)
     // Fetch data using Axios with credentials
     const fetchData = async () => {
       try {
@@ -17,6 +19,7 @@ const TableComp = () => {
           withCredentials: true // Include cookies in the request
         });
         setProducts(response.data);
+        setIsLoading(false)
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -33,56 +36,63 @@ const TableComp = () => {
       >
         Add New Product
       </Link>
-      <Table hoverable>
-        <Table.Head>
-          <Table.HeadCell>Product name</Table.HeadCell>
-          <Table.HeadCell>sku</Table.HeadCell>
-          <Table.HeadCell>Category</Table.HeadCell>
-          <Table.HeadCell>Quantity</Table.HeadCell>
-          <Table.HeadCell>Price</Table.HeadCell>
-          <Table.HeadCell>
-            <span className="sr-only">Edit</span>
-          </Table.HeadCell>
-          <Table.HeadCell>
-            <span className="sr-only">Delete</span>
-          </Table.HeadCell>
-        </Table.Head>
-        <Table.Body className="divide-y">
-          {
-            products.map(product => (
-              <Table.Row
-                key={product._id}
-                className="bg-white dark:border-gray-700 dark:bg-gray-800"
-              >
-                <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-                  {product.name}
-                </Table.Cell>
-                <Table.Cell>{product.sku}</Table.Cell>
-                <Table.Cell>{product.category}</Table.Cell>
-                <Table.Cell>{product.quantity}</Table.Cell>
-                <Table.Cell>{product.price}</Table.Cell>
-                <Table.Cell>
-                  <Link
-                    to={`/edit-product/${product._id}`}
-                    className="font-medium text-cyan-600 hover:underline dark:text-cyan-500"
-                  >
-                    Edit
-                  </Link>
-                </Table.Cell>
-                <Table.Cell>
-                  <Link
-                    to={`/delete-product/${product._id}`}
-                  >
-                    <FaTrash
-                      className='hover:cursor-pointer'
-                    />
-                  </Link>
-                </Table.Cell>
-              </Table.Row>
-            ))
-          }
-        </Table.Body>
-      </Table>
+
+      {loading
+        ?
+        <Spinner
+          aria-label="Default status example"
+        />
+        :
+        <Table hoverable>
+          <Table.Head>
+            <Table.HeadCell>Product name</Table.HeadCell>
+            <Table.HeadCell>sku</Table.HeadCell>
+            <Table.HeadCell>Category</Table.HeadCell>
+            <Table.HeadCell>Quantity</Table.HeadCell>
+            <Table.HeadCell>Price</Table.HeadCell>
+            <Table.HeadCell>
+              <span className="sr-only">Edit</span>
+            </Table.HeadCell>
+            <Table.HeadCell>
+              <span className="sr-only">Delete</span>
+            </Table.HeadCell>
+          </Table.Head>
+          <Table.Body className="divide-y">
+            {
+              products.map(product => (
+                <Table.Row
+                  key={product._id}
+                  className="bg-white dark:border-gray-700 dark:bg-gray-800"
+                >
+                  <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
+                    {product.name}
+                  </Table.Cell>
+                  <Table.Cell>{product.sku}</Table.Cell>
+                  <Table.Cell>{product.category}</Table.Cell>
+                  <Table.Cell>{product.quantity}</Table.Cell>
+                  <Table.Cell>{product.price}</Table.Cell>
+                  <Table.Cell>
+                    <Link
+                      to={`/edit-product/${product._id}`}
+                      className="font-medium text-cyan-600 hover:underline dark:text-cyan-500"
+                    >
+                      Edit
+                    </Link>
+                  </Table.Cell>
+                  <Table.Cell>
+                    <Link
+                      to={`/delete-product/${product._id}`}
+                    >
+                      <FaTrash
+                        className='hover:cursor-pointer'
+                      />
+                    </Link>
+                  </Table.Cell>
+                </Table.Row>
+              ))
+            }
+          </Table.Body>
+        </Table>}
     </div>
   )
 }

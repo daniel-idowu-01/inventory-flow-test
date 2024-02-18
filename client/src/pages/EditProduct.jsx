@@ -128,7 +128,7 @@ const EditProduct = () => {
               required
             >
               {data.category.map(category => (
-                <option id={category.value} value={category.value}>
+                <option key={category.value} value={category.value}>
                   {category.title}
                 </option>
               ))}

@@ -99,7 +99,7 @@ const CreateProduct = () => {
           </div>
           <Select id="countries" className='w-full' name='category' onChange={handleFormChange} required>
             {data.category.map(category => (
-              <option id={category.value} value={category.value}>
+              <option key={category.value} value={category.value}>
                 {category.title}
               </option>
             ))}
