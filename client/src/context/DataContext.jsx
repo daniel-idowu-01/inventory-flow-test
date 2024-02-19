@@ -8,6 +8,8 @@ export function DataProvider({ children }) {
   const [products, setProducts] = useState([])
   const [totalPrice, setTotalPrice] = useState(0)
   const [totalQuantity, setTotalQuantity] = useState(0)
+  const [totalPricePerCategory, setTotalPricePerCategory] = useState([])
+  const [totalQuantityPerCategory, setTotalQuantityPerCategory] = useState([])
 
   const numberOfProducts = products.length;
 
@@ -46,7 +48,7 @@ export function DataProvider({ children }) {
     } 
 
     // Return the object containing the total price for each category.
-    return totalPricesPerCategory;
+    return setTotalPricePerCategory(totalPricesPerCategory);
   }
 
    //////////////////
@@ -67,11 +69,26 @@ export function DataProvider({ children }) {
     } 
 
     // Return the object containing the total price for each category.
-    return totalQuantityPerCategory;
+    return setTotalQuantityPerCategory(totalQuantityPerCategory);
   }
 
     return (
-        <DataContext.Provider value={{ sideBar, setSideBar, products, setProducts, calculateTotalPrice, calculateTotalQuantity, totalPrice, totalQuantity }}>
+      <DataContext.Provider value={{
+        sideBar,
+        setSideBar,
+        products,
+        setProducts,
+        calculateTotalPrice,
+        calculateTotalQuantity,
+        totalPrice,
+        totalQuantity,
+        numberOfProducts,
+        maxPrice,
+        getTotalPricePerCategory,
+        getTotalQuantityPerCategory,
+        totalPricePerCategory,
+        totalQuantityPerCategory
+      }}>
             {children} 
         </DataContext.Provider>
     )

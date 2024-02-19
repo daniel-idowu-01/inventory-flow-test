@@ -7,7 +7,7 @@ import DataContext from '../context/DataContext';
 
 const TableComp = () => {
 
-  const { calculateTotalPrice, calculateTotalQuantity, products, setProducts } = useContext(DataContext);
+  const { products, setProducts } = useContext(DataContext);
   const [loading, setIsLoading] = useState(false)
 
   useEffect(() => {
@@ -26,8 +26,6 @@ const TableComp = () => {
     };
 
     fetchData();
-    calculateTotalPrice();
-    calculateTotalQuantity();
   }, []);
 
   return (

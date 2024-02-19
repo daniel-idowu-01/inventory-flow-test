@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   BarChart,
   Bar,
@@ -8,59 +8,37 @@ import {
   Tooltip,
   Legend
 } from "recharts";
-
-const data = [
-  {
-    name: "M",
-    uv: 60,
-    pv: 2400,
-    amt: 2400
-  },
-  {
-    name: "T",
-    uv: 20,
-    pv: 1398,
-    amt: 2210
-  },
-  {
-    name: "W",
-    uv: 40,
-    pv: 9800,
-    amt: 2290
-  },
-  {
-    name: "T",
-    uv: 30,
-    pv: 3908,
-    amt: 2000
-  },
-  {
-    name: "F",
-    uv: 20,
-    pv: 4800,
-    amt: 2181
-  },
-  {
-    name: "S",
-    uv: 30,
-    pv: 3800,
-    amt: 2500
-  },
-  {
-    name: "S",
-    uv: 40,
-    pv: 4300,
-    amt: 2100
-  }
-];
+import DataContext from '../context/DataContext';
 
 const BarChartComp = () => {
+
+  const { totalPricePerCategory, totalQuantityPerCategory } = useContext(DataContext)
+
+  function mapData(originalData) {
+    const result = [];
+
+    for (const [category, value] of Object.entries(originalData)) {
+      for (let i = 0; i < 1; i++) {
+        const name = category
+        const pricePerCategory = parseInt(value);
+        result.push({
+          name: name,
+          pricePerCategory: pricePerCategory
+        });
+      }
+    }
+
+    return result;
+  }
+
+  const mappedData = mapData(totalPricePerCategory);
+
   return (
     <div>
       <BarChart
         width={400}
         height={300}
-        data={data}
+        data={mappedData}
         margin={{
           top: 5,
           right: 50,
@@ -72,11 +50,11 @@ const BarChartComp = () => {
         <XAxis dataKey="name" stroke="#fff" />
         <YAxis stroke="#fff" />
         <Tooltip
-          contentStyle={{ backgroundColor: 'black', color: 'white' }} // Customize tooltip background and text color
+          contentStyle={{ backgroundColor: 'black', color: 'white' }}
           itemStyle={{ color: 'white' }}
         />
         <Legend />
-        <Bar dataKey="uv" fill="#fff" barSize={15} shape={<RoundedBar />} />
+        <Bar dataKey="pricePerCategory" fill="#fff" barSize={15} shape={<RoundedBar />} />
       </BarChart>
     </div>
   );

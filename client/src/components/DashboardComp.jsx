@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import StatsComp from './StatsComp'
 import TopNav from './TopNav';
 import BarChartComp from './BarChartComp';
@@ -12,7 +12,25 @@ import DataContext from '../context/DataContext';
 
 const DashboardComp = () => {
 
-  const { totalPrice, totalQuantity } = useContext(DataContext)
+  const {
+    maxPrice,
+    products,
+    totalPrice,
+    totalQuantity,
+    numberOfProducts,
+    calculateTotalPrice,
+    calculateTotalQuantity,
+    getTotalPricePerCategory,
+    getTotalQuantityPerCategory,
+  } = useContext(DataContext)
+
+  useEffect(() => {
+    calculateTotalPrice();
+    calculateTotalQuantity();
+    getTotalPricePerCategory(products);
+    getTotalQuantityPerCategory(products);
+  }, [])
+
 
   // data for top dashboard stats
   const dashboardStats = [
@@ -34,15 +52,15 @@ const DashboardComp = () => {
     },
     {
       title: 'Revenue',
-      value: '48k',
+      value: numberOfProducts,
       percent: '+1',
       time: 'yesterday',
       icon: <FaStoreAlt />,
       bg_color: 'bg-green-500'
     },
     {
-      title: 'Followers',
-      value: '+82',
+      title: 'Most Expensive Product',
+      value: `$${maxPrice}`,
       percent: 'Just updated',
       time: '',
       icon: <FiUserPlus />,
