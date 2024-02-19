@@ -114,27 +114,28 @@ const EditProduct = () => {
         </article>
 
         {/* row two */}
-        <article className='flex flex-col md:flex-row gap-5 justify-between'>
-          <div className="max-w-md">
-            <div className="mb-2 block">
-              <Label htmlFor="countries" value="Select category" />
-            </div>
-            <Select
-              id="countries"
-              className='w-full md:w-80'
-              name='category'
-              defaultValue={productInfo.category}
-              onChange={handleFormChange}
-              required
-            >
-              {data.category.map(category => (
-                <option key={category.value} value={category.value}>
-                  {category.title}
-                </option>
-              ))}
-            </Select>
+        <div className="w-full">
+          <div className="mb-2 block">
+            <Label htmlFor="countries" value="Select category" />
           </div>
+          <Select
+            id="countries"
+            className='w-full'
+            name='category'
+            onChange={handleFormChange}
+            defaultValue={productInfo.category}
+            required
+          >
+            {data.category.map(category => (
+              <option key={category.value} value={category.value}>
+                {category.title}
+              </option>
+            ))}
+          </Select>
+        </div>
 
+        {/* row three */}
+        <article className='flex flex-col md:flex-row gap-5 justify-between'>
           <div>
             <div className="mb-2 block">
               <Label htmlFor="quantity" value="Quantity" />
@@ -147,6 +148,22 @@ const EditProduct = () => {
               defaultValue={productInfo.quantity}
               onChange={handleFormChange}
               placeholder="Quantity"
+              required shadow
+            />
+          </div>
+
+          <div>
+            <div className="mb-2 block">
+              <Label htmlFor="price" value="Price" />
+            </div>
+            <TextInput
+              id="price"
+              type="text"
+              className='w-full md:w-80'
+              name='price'
+              defaultValue={productInfo.price}
+              onChange={handleFormChange}
+              placeholder="Price"
               required shadow
             />
           </div>
