@@ -1,6 +1,6 @@
 import { createContext, useState } from "react";
 
- const DataContext = createContext({})
+const DataContext = createContext({})
 
 export function DataProvider({ children }) {
 
@@ -13,29 +13,44 @@ export function DataProvider({ children }) {
 
   const numberOfProducts = products.length;
 
-    // Calculate the total price
+  // calculate the total price
   const calculateTotalPrice = () => {
     const sum = products.reduce((accumulator, product) => accumulator + parseInt(product.price), 0);
     setTotalPrice(sum);
-    };
-    
-    // Calculate the total quantity
+  };
+
+
+  // calculate the total quantity
   const calculateTotalQuantity = () => {
     const sum = products.reduce((accumulator, product) => accumulator + parseInt(product.quantity), 0);
     setTotalQuantity(sum);
   };
 
-  // to get the most expensive product
-  const maxPrice = products.reduce(function(max, product) {
-  return Math.max(max, product.price);
-  }, -Infinity);
+
+  // function to get the most expensive product
+  function getProductWithMaxPrice(products) {
+    if (products.length === 0) {
+      return null;
+    }
+
+    let maxPrice = parseInt(products[0].price);
+    let productNameWithMaxPrice = products[0].name;
+
+    for (let i = 1; i < products.length; i++) {
+      if (products[i].price > maxPrice) {
+        maxPrice = parseInt(products[i].price);
+        productNameWithMaxPrice = products[i].name;
+      }
+    }
+
+    return productNameWithMaxPrice;
+  }
+
 
   //////////////////
   function getTotalPricePerCategory(products) {
-    // Create an object to store the total price for each category.
     const totalPricesPerCategory = {};
 
-    // Iterate over the array and add the price of each product to the total price for the corresponding category.
     for (const product of products) {
       const category = product.category;
       const price = product.price;
@@ -45,18 +60,16 @@ export function DataProvider({ children }) {
       }
 
       totalPricesPerCategory[category] += price;
-    } 
+    }
 
-    // Return the object containing the total price for each category.
     return setTotalPricePerCategory(totalPricesPerCategory);
   }
 
-   //////////////////
+
+  //////////////////
   function getTotalQuantityPerCategory(products) {
-    // Create an object to store the total quantity for each category.
     const totalQuantityPerCategory = {};
 
-    // Iterate over the array and add the quantity of each product to the total quantity for the corresponding category.
     for (const product of products) {
       const category = product.category;
       const quantity = product.quantity;
@@ -66,32 +79,32 @@ export function DataProvider({ children }) {
       }
 
       totalQuantityPerCategory[category] += quantity;
-    } 
+    }
 
-    // Return the object containing the total price for each category.
     return setTotalQuantityPerCategory(totalQuantityPerCategory);
   }
 
-    return (
-      <DataContext.Provider value={{
-        sideBar,
-        setSideBar,
-        products,
-        setProducts,
-        calculateTotalPrice,
-        calculateTotalQuantity,
-        totalPrice,
-        totalQuantity,
-        numberOfProducts,
-        maxPrice,
-        getTotalPricePerCategory,
-        getTotalQuantityPerCategory,
-        totalPricePerCategory,
-        totalQuantityPerCategory
-      }}>
-            {children} 
-        </DataContext.Provider>
-    )
+
+  return (
+    <DataContext.Provider value={{
+      sideBar,
+      setSideBar,
+      products,
+      setProducts,
+      calculateTotalPrice,
+      calculateTotalQuantity,
+      totalPrice,
+      totalQuantity,
+      numberOfProducts,
+      getTotalPricePerCategory,
+      getTotalQuantityPerCategory,
+      totalPricePerCategory,
+      totalQuantityPerCategory,
+      getProductWithMaxPrice
+    }}>
+      {children}
+    </DataContext.Provider>
+  )
 }
 
 export default DataContext

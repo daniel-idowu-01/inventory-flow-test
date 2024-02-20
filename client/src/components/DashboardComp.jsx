@@ -12,25 +12,29 @@ import DataContext from '../context/DataContext';
 
 const DashboardComp = () => {
 
+  // data imported from the global state
   const {
-    maxPrice,
     products,
     totalPrice,
     totalQuantity,
     numberOfProducts,
     calculateTotalPrice,
     calculateTotalQuantity,
+    getProductWithMaxPrice,
     getTotalPricePerCategory,
     getTotalQuantityPerCategory,
   } = useContext(DataContext)
 
+  //
   useEffect(() => {
     calculateTotalPrice();
     calculateTotalQuantity();
+    getProductWithMaxPrice(products)
     getTotalPricePerCategory(products);
     getTotalQuantityPerCategory(products);
   }, [])
 
+  const maxProduct = getProductWithMaxPrice(products)
 
   // data for top dashboard stats
   const dashboardStats = [
@@ -51,7 +55,7 @@ const DashboardComp = () => {
       bg_color: 'bg-blue-500'
     },
     {
-      title: 'Revenue',
+      title: 'Entry/Record',
       value: numberOfProducts,
       percent: '+1',
       time: 'yesterday',
@@ -59,8 +63,8 @@ const DashboardComp = () => {
       bg_color: 'bg-green-500'
     },
     {
-      title: 'Most Expensive Product',
-      value: `$${maxPrice}`,
+      title: 'High-level Item',
+      value: `${maxProduct}`,
       percent: 'Just updated',
       time: '',
       icon: <FiUserPlus />,
@@ -86,7 +90,7 @@ const DashboardComp = () => {
 
           {/* Bar and Line Chart */}
           <main
-            className='grid grid-cols-1 md:grid-cols-2 place-items-center md:place-items-center gap-10 px-10 pb-10'
+            className=' grid-cols-1 md:grid-cols-2 place-items-center gap-10 px-10 pb-10'
           >
             {/* bar chart component */}
             <article>
@@ -95,12 +99,12 @@ const DashboardComp = () => {
               </div>
 
               <div className='shadow-xl px-10 py-5 rounded-b-xl'>
-                <p className='text-lg font-bold opacity-80'>Website Views</p>
+                <p className='text-lg font-bold opacity-80'>Total Price Per Category($)</p>
                 <p className='opacity-50'>Last Campaign Performance</p>
                 <hr className='w-[80%] mx-auto my-3' />
                 <div className='flex items-center gap-1 opacity-30'>
                   <MdOutlineTimer />
-                  <p>campaign sent 2 days ago</p>
+                  <p>updated 2 days ago</p>
                 </div>
               </div>
             </article>

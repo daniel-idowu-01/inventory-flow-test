@@ -12,17 +12,19 @@ import DataContext from '../context/DataContext';
 
 const BarChartComp = () => {
 
-  const { totalPricePerCategory, totalQuantityPerCategory } = useContext(DataContext)
+  const { totalPricePerCategory } = useContext(DataContext)
 
+  // mapping the object into a format
   function mapData(originalData) {
     const result = [];
 
     for (const [category, value] of Object.entries(originalData)) {
       for (let i = 0; i < 1; i++) {
-        const name = category
+        const split_name = category.split(" ");
+        const initials = split_name[0]
         const pricePerCategory = parseInt(value);
         result.push({
-          name: name,
+          name: initials,
           pricePerCategory: pricePerCategory
         });
       }
@@ -36,8 +38,8 @@ const BarChartComp = () => {
   return (
     <div>
       <BarChart
-        width={400}
-        height={300}
+        width={850}
+        height={500}
         data={mappedData}
         margin={{
           top: 5,
